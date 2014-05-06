@@ -1,0 +1,389 @@
+
+pack.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+btn_bullet
+  rotate: false
+  xy: 2, 1214
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+btn_exit
+  rotate: false
+  xy: 504, 1617
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+btn_gallery
+  rotate: false
+  xy: 2, 1012
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+btn_howto
+  rotate: false
+  xy: 204, 1214
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+btn_medal
+  rotate: false
+  xy: 706, 1617
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+btn_music
+  rotate: false
+  xy: 2, 810
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+btn_no
+  rotate: false
+  xy: 204, 1012
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+btn_off
+  rotate: false
+  xy: 2, 608
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+btn_pause
+  rotate: false
+  xy: 204, 810
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+btn_play
+  rotate: false
+  xy: 2, 406
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+btn_sound
+  rotate: false
+  xy: 204, 608
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+btn_star
+  rotate: false
+  xy: 2, 204
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+btn_yes
+  rotate: false
+  xy: 204, 406
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+bullet-0
+  rotate: false
+  xy: 2, 2
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+bullet-1
+  rotate: false
+  xy: 204, 204
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+bullet-2
+  rotate: false
+  xy: 204, 2
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+bullet-3
+  rotate: false
+  xy: 504, 1415
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+bullet-4
+  rotate: false
+  xy: 706, 1415
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+bullet-5
+  rotate: false
+  xy: 406, 1213
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+bullet-6
+  rotate: false
+  xy: 406, 1011
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+bullet-7
+  rotate: false
+  xy: 608, 1213
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+footmade_logo
+  rotate: false
+  xy: 2, 1416
+  size: 500, 401
+  orig: 500, 401
+  offset: 0, 0
+  index: -1
+spr_airplane
+  rotate: false
+  xy: 810, 1213
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+spr_bomb
+  rotate: false
+  xy: 406, 809
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+spr_grenade
+  rotate: false
+  xy: 608, 1011
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+spr_ice
+  rotate: false
+  xy: 810, 1011
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+spr_missile
+  rotate: false
+  xy: 406, 607
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: 0
+spr_missile
+  rotate: false
+  xy: 608, 809
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: 2
+spr_missile
+  rotate: false
+  xy: 810, 809
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: 4
+spr_missile
+  rotate: false
+  xy: 406, 405
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: 6
+spr_wall
+  rotate: false
+  xy: 608, 607
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+tile_grass
+  rotate: false
+  xy: 810, 607
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+tile_sand
+  rotate: false
+  xy: 406, 203
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+tile_skulls1
+  rotate: false
+  xy: 608, 405
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+tile_skulls2
+  rotate: false
+  xy: 810, 405
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+tile_stones
+  rotate: false
+  xy: 608, 203
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+
+pack2.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+girls/agirl-01-00
+  rotate: false
+  xy: 2, 2
+  size: 800, 1200
+  orig: 800, 1200
+  offset: 0, 0
+  index: -1
+
+pack3.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+girls/agirl-01-01
+  rotate: false
+  xy: 2, 2
+  size: 800, 1200
+  orig: 800, 1200
+  offset: 0, 0
+  index: -1
+
+pack4.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+girls/agirl-01-02
+  rotate: false
+  xy: 2, 2
+  size: 800, 1200
+  orig: 800, 1200
+  offset: 0, 0
+  index: -1
+
+pack5.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+girls/agirl-01-03
+  rotate: false
+  xy: 2, 2
+  size: 800, 1200
+  orig: 800, 1200
+  offset: 0, 0
+  index: -1
+
+pack6.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+girls/agirl-01-04
+  rotate: false
+  xy: 2, 2
+  size: 800, 1200
+  orig: 800, 1200
+  offset: 0, 0
+  index: -1
+
+pack7.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+girls/agirl-01-05
+  rotate: false
+  xy: 2, 2
+  size: 800, 1200
+  orig: 800, 1200
+  offset: 0, 0
+  index: -1
+
+pack8.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+girls/agirl-01-06
+  rotate: false
+  xy: 2, 2
+  size: 800, 1200
+  orig: 800, 1200
+  offset: 0, 0
+  index: -1
+
+pack9.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+girls/agirl-01-07
+  rotate: false
+  xy: 2, 2
+  size: 800, 1200
+  orig: 800, 1200
+  offset: 0, 0
+  index: -1
+
+pack10.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+girls/agirl-01-08
+  rotate: false
+  xy: 2, 2
+  size: 800, 1200
+  orig: 800, 1200
+  offset: 0, 0
+  index: -1
+
+pack11.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+girls/agirl-01-09
+  rotate: false
+  xy: 2, 2
+  size: 800, 1200
+  orig: 800, 1200
+  offset: 0, 0
+  index: -1
+
+pack12.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+girls/agirl-01-10
+  rotate: false
+  xy: 2, 2
+  size: 800, 1200
+  orig: 800, 1200
+  offset: 0, 0
+  index: -1
