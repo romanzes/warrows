@@ -260,11 +260,179 @@ pack2.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-girls/agirl-01-00
+comics/intro/1
   rotate: false
-  xy: 2, 2
-  size: 800, 1200
-  orig: 800, 1200
+  xy: 221, 2
+  size: 133, 278
+  orig: 133, 278
+  offset: 0, 0
+  index: -1
+comics/intro/10
+  rotate: false
+  xy: 766, 342
+  size: 136, 220
+  orig: 136, 220
+  offset: 0, 0
+  index: -1
+comics/intro/11
+  rotate: false
+  xy: 759, 107
+  size: 142, 220
+  orig: 142, 220
+  offset: 0, 0
+  index: -1
+comics/intro/12
+  rotate: false
+  xy: 2, 1253
+  size: 428, 211
+  orig: 428, 211
+  offset: 0, 0
+  index: -1
+comics/intro/13
+  rotate: false
+  xy: 179, 282
+  size: 215, 370
+  orig: 215, 370
+  offset: 0, 0
+  index: -1
+comics/intro/14
+  rotate: false
+  xy: 2, 232
+  size: 175, 420
+  orig: 175, 420
+  offset: 0, 0
+  index: -1
+comics/intro/15
+  rotate: false
+  xy: 431, 1044
+  size: 250, 179
+  orig: 250, 179
+  offset: 0, 0
+  index: -1
+comics/intro/16
+  rotate: false
+  xy: 678, 564
+  size: 216, 236
+  orig: 216, 236
+  offset: 0, 0
+  index: -1
+comics/intro/17
+  rotate: false
+  xy: 746, 1273
+  size: 153, 233
+  orig: 153, 233
+  offset: 0, 0
+  index: -1
+comics/intro/18
+  rotate: false
+  xy: 605, 329
+  size: 159, 233
+  orig: 159, 233
+  offset: 0, 0
+  index: -1
+comics/intro/19
+  rotate: false
+  xy: 607, 94
+  size: 150, 233
+  orig: 150, 233
+  offset: 0, 0
+  index: -1
+comics/intro/2
+  rotate: false
+  xy: 434, 1225
+  size: 310, 281
+  orig: 310, 281
+  offset: 0, 0
+  index: -1
+comics/intro/20
+  rotate: false
+  xy: 248, 654
+  size: 191, 388
+  orig: 191, 388
+  offset: 0, 0
+  index: -1
+comics/intro/21
+  rotate: false
+  xy: 2, 654
+  size: 244, 388
+  orig: 244, 388
+  offset: 0, 0
+  index: -1
+comics/intro/22
+  rotate: false
+  xy: 450, 1508
+  size: 433, 196
+  orig: 433, 196
+  offset: 0, 0
+  index: -1
+comics/intro/23
+  rotate: false
+  xy: 356, 40
+  size: 249, 240
+  orig: 249, 240
+  offset: 0, 0
+  index: -1
+comics/intro/24
+  rotate: false
+  xy: 678, 802
+  size: 184, 240
+  orig: 184, 240
+  offset: 0, 0
+  index: -1
+comics/intro/25
+  rotate: false
+  xy: 2, 1466
+  size: 430, 236
+  orig: 430, 236
+  offset: 0, 0
+  index: -1
+comics/intro/3
+  rotate: false
+  xy: 450, 1706
+  size: 447, 224
+  orig: 447, 224
+  offset: 0, 0
+  index: -1
+comics/intro/4
+  rotate: false
+  xy: 2, 1704
+  size: 446, 226
+  orig: 446, 226
+  offset: 0, 0
+  index: -1
+comics/intro/5
+  rotate: false
+  xy: 396, 333
+  size: 207, 319
+  orig: 207, 319
+  offset: 0, 0
+  index: -1
+comics/intro/6
+  rotate: false
+  xy: 441, 723
+  size: 235, 319
+  orig: 235, 319
+  offset: 0, 0
+  index: -1
+comics/intro/7
+  rotate: false
+  xy: 2, 1044
+  size: 427, 207
+  orig: 427, 207
+  offset: 0, 0
+  index: -1
+comics/intro/8
+  rotate: false
+  xy: 2, 22
+  size: 217, 208
+  orig: 217, 208
+  offset: 0, 0
+  index: -1
+comics/intro/9
+  rotate: false
+  xy: 746, 1051
+  size: 142, 220
+  orig: 142, 220
   offset: 0, 0
   index: -1
 
@@ -272,7 +440,7 @@ pack3.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-girls/agirl-01-01
+girls/agirl-01-00
   rotate: false
   xy: 2, 2
   size: 800, 1200
@@ -284,7 +452,7 @@ pack4.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-girls/agirl-01-02
+girls/agirl-01-01
   rotate: false
   xy: 2, 2
   size: 800, 1200
@@ -296,7 +464,7 @@ pack5.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-girls/agirl-01-03
+girls/agirl-01-02
   rotate: false
   xy: 2, 2
   size: 800, 1200
@@ -308,7 +476,7 @@ pack6.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-girls/agirl-01-04
+girls/agirl-01-03
   rotate: false
   xy: 2, 2
   size: 800, 1200
@@ -320,7 +488,7 @@ pack7.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-girls/agirl-01-05
+girls/agirl-01-04
   rotate: false
   xy: 2, 2
   size: 800, 1200
@@ -332,7 +500,7 @@ pack8.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-girls/agirl-01-06
+girls/agirl-01-05
   rotate: false
   xy: 2, 2
   size: 800, 1200
@@ -344,7 +512,7 @@ pack9.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-girls/agirl-01-07
+girls/agirl-01-06
   rotate: false
   xy: 2, 2
   size: 800, 1200
@@ -356,7 +524,7 @@ pack10.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-girls/agirl-01-08
+girls/agirl-01-07
   rotate: false
   xy: 2, 2
   size: 800, 1200
@@ -368,7 +536,7 @@ pack11.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-girls/agirl-01-09
+girls/agirl-01-08
   rotate: false
   xy: 2, 2
   size: 800, 1200
@@ -377,6 +545,18 @@ girls/agirl-01-09
   index: -1
 
 pack12.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+girls/agirl-01-09
+  rotate: false
+  xy: 2, 2
+  size: 800, 1200
+  orig: 800, 1200
+  offset: 0, 0
+  index: -1
+
+pack13.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none

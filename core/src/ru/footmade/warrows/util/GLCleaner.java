@@ -5,10 +5,10 @@ import com.badlogic.gdx.graphics.GL20;
 
 public class GLCleaner {
 	public static void clearARGB(int color) {
-		float alpha = ((color >> 24) & 0xff) / 0xff;
-		float red = ((color >> 16) & 0xff) / 0xff;
-		float green = ((color >> 8) & 0xff) / 0xff;
-		float blue = (color & 0xff) / 0xff;
+		float alpha = (float)((color & 0xff000000) >> 24) / 0xff;
+		float red = (float)((color & 0xff0000) >> 16) / 0xff;
+		float green = (float)((color & 0xff00) >> 8) / 0xff;
+		float blue = (float)(color & 0xff) / 0xff;
 		Gdx.gl.glClearColor(red, green, blue, alpha);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 	}

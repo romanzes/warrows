@@ -8,9 +8,15 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 
 public class MyGdxGame extends Game {
+	private static Game _self;
+	
+	public static Game getSelf() {
+		return _self;
+	}
 	
 	@Override
-	public void create () {
+	public void create() {
+		_self = this;
 		MyTweenManager.register();
 		setScreen(new SplashScreen());
 	}

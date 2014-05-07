@@ -1,6 +1,7 @@
 package ru.footmade.warrows.tweens;
 
 import ru.footmade.warrows.util.Fader;
+import ru.footmade.warrows.util.Observer;
 import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenManager;
 
@@ -15,6 +16,7 @@ public class MyTweenManager extends TweenManager {
 	
 	public static void register() {
 		Tween.registerAccessor(Fader.class, new FaderAccessor());
+		Tween.registerAccessor(Observer.class, new ObserverAccessor());
 	}
 	
 	public static void updateInstance(float deltaTime) {
