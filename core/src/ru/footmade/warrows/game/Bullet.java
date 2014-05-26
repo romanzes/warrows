@@ -27,7 +27,7 @@ public class Bullet extends Item {
 	
 	private int direction;
 
-	protected Bullet(Logic logic, int x, int y, int direction) {
+	protected Bullet(Field logic, int x, int y, int direction) {
 		super(logic, x, y, types.get(direction));
 		this.direction = direction;
 	}
@@ -51,12 +51,12 @@ public class Bullet extends Item {
 			destY--;
 			break;
 		}
-		Item neighbour = getLogic().getItem(destX, destY);
+		Item neighbour = getField().getItem(destX, destY);
 		if (neighbour != null) {
 			neighbour.moveTo(x, y, true);
 		}
 		moveTo(destX, destY);
-		if (destX < 0 || destX >= Logic.FIELD_WIDTH || destY < 0 || destY >= Logic.FIELD_HEIGHT)
+		if (destX < 0 || destX >= Field.FIELD_WIDTH || destY < 0 || destY >= Field.FIELD_HEIGHT)
 			destroy();
 	}
 }

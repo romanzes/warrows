@@ -7,7 +7,7 @@ import java.util.Random;
 import java.util.Set;
 
 import ru.footmade.warrows.game.Item;
-import ru.footmade.warrows.game.Logic;
+import ru.footmade.warrows.game.Field;
 import ru.footmade.warrows.tweens.ItemAccessor;
 import ru.footmade.warrows.tweens.MyTweenManager;
 import ru.footmade.warrows.util.CommonResources;
@@ -28,7 +28,7 @@ public class GameplayScreen extends ScreenAdapter {
 	private SpriteBatch batch;
 	private int scrW, scrH;
 	
-	private Logic logic;
+	private Field field;
 	
 	private static final float FIELD_RELATIVE_SIZE = 0.9f;
 	private static final float MOVE_TIME = 0.4f;
@@ -52,7 +52,7 @@ public class GameplayScreen extends ScreenAdapter {
 	
 	@Override
 	public void show() {
-		logic = new Logic();
+		field = new Field();
 		
 		fieldTile = CommonResources.getLinearRegion("sprites/tile-sand");
 		backgroundPart = CommonResources.getLinearRegion("ui/statusbg");
@@ -71,7 +71,7 @@ public class GameplayScreen extends ScreenAdapter {
 			public boolean tap(float x, float y, int count, int button) {
 				if (actionLock.isEmpty()) {
 					y = scrH - y;
-					for (Item item : logic.items) {
+					for (Item item : field.items) {
 						if (item.getBoundingRectangle().contains(x, y)) {
 							item.process();
 							actionLock.add(GameplayScreen.this);
@@ -89,14 +89,14 @@ public class GameplayScreen extends ScreenAdapter {
 		batch = new SpriteBatch();
 		scrW = width;
 		scrH = height;
-		cellSize = Math.min(scrH / (Logic.FIELD_HEIGHT + 2), scrW / Logic.FIELD_WIDTH);
+		cellSize = Math.min(scrH / (Field.FIELD_HEIGHT + 2), scrW / Field.FIELD_WIDTH);
 		statusHeight = cellSize * 2;
 		cellSize *= FIELD_RELATIVE_SIZE;
-		float fieldW = cellSize * Logic.FIELD_WIDTH;
-		float fieldH = cellSize * Logic.FIELD_HEIGHT;
+		float fieldW = cellSize * Field.FIELD_WIDTH;
+		float fieldH = cellSize * Field.FIELD_HEIGHT;
 		fieldRect = new Rectangle((scrW - fieldW) / 2, (scrH + statusHeight - fieldH) / 2, fieldW, fieldH);
 		
-		for (Item item : logic.items) {
+		for (Item item : field.items) {
 			item.setBounds(fieldRect.x + item.x * cellSize, fieldRect.y + item.y * cellSize,
 					(float) Math.ceil(cellSize), (float) Math.ceil(cellSize));
 			item.setOriginCenter();
@@ -112,8 +112,8 @@ public class GameplayScreen extends ScreenAdapter {
 	}
 	
 	private void drawField() {
-		for (int i = 0; i < Logic.FIELD_WIDTH; i++) {
-			for (int j = 0; j < Logic.FIELD_HEIGHT; j++) {
+		for (int i = 0; i < Field.FIELD_WIDTH; i++) {
+			for (int j = 0; j < Field.FIELD_HEIGHT; j++) {
 				batch.draw(fieldTile, fieldRect.x + i * cellSize, fieldRect.y + j * cellSize,
 						(float) Math.ceil(cellSize), (float) Math.ceil(cellSize));
 			}
@@ -124,7 +124,7 @@ public class GameplayScreen extends ScreenAdapter {
 		for (Item item : backgroundItems) {
 			item.draw(batch, item.alpha);
 		}
-		for (final Item item : logic.items) {
+		for (final Item item : field.items) {
 			if (!(backgroundItems.contains(item) || foregroundItems.contains(item)))
 				item.draw(batch, item.alpha);
 			if (item.moveFlag) {
@@ -157,7 +157,7 @@ public class GameplayScreen extends ScreenAdapter {
 						.setCallback(new TweenCallback() {
 							@Override
 							public void onEvent(int type, BaseTween<?> source) {
-								logic.items.remove(item);
+								field.items.remove(item);
 								actionLock.remove(item);
 							}
 						});
@@ -186,7 +186,7 @@ public class GameplayScreen extends ScreenAdapter {
 						.setCallback(new TweenCallback() {
 							@Override
 							public void onEvent(int type, BaseTween<?> source) {
-								logic.items.remove(item);
+								field.items.remove(item);
 								actionLock.remove(item);
 							}
 						}).start(MyTweenManager.getInstance());

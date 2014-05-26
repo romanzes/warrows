@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class Logic {
+public class Field {
 	public static final int FIELD_WIDTH = 6;
 	public static final int FIELD_HEIGHT = 6;
 	
 	public final List<Item> items = new ArrayList<Item>();
 	
-	public Logic() {
+	public Field() {
 		int[] types = new int[] {
 				Bullet.DIRECTION_LEFT,
 				Bullet.DIRECTION_RIGHT,

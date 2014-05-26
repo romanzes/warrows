@@ -5,22 +5,22 @@ import ru.footmade.warrows.util.CommonResources;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 
 public abstract class Item extends Sprite {
-	private Logic logic;
+	private Field field;
 	public float alpha = 1f;
 	public int x, y;
 	public boolean moveFlag, reverseMove;
 	public boolean destroyFlag;
 	public boolean explodeFlag;
 	
-	protected Item(Logic logic, int x, int y, String type) {
+	protected Item(Field field, int x, int y, String type) {
 		super(CommonResources.getLinearRegion(type));
-		this.logic = logic;
+		this.field = field;
 		this.x = x;
 		this.y = y;
 	}
 	
-	public Logic getLogic() {
-		return logic;
+	public Field getField() {
+		return field;
 	}
 	
 	protected void moveTo(int x, int y) {
