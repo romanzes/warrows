@@ -1,8 +1,10 @@
 package ru.footmade.warrows.screens;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 import ru.footmade.warrows.game.Item;
 import ru.footmade.warrows.game.Logic;
@@ -46,7 +48,7 @@ public class GameplayScreen extends ScreenAdapter {
 	private final List<Item> backgroundItems = new ArrayList<Item>();
 	private final List<Item> foregroundItems = new ArrayList<Item>();
 	
-	private boolean allowAction = true;
+	private final Set<Object> actionLock = new HashSet<Object>();
 	
 	@Override
 	public void show() {
@@ -67,12 +69,12 @@ public class GameplayScreen extends ScreenAdapter {
 		Gdx.input.setInputProcessor(new GestureDetector(new GestureDetector.GestureAdapter() {
 			@Override
 			public boolean tap(float x, float y, int count, int button) {
-				if (allowAction) {
+				if (actionLock.isEmpty()) {
 					y = scrH - y;
 					for (Item item : logic.items) {
 						if (item.getBoundingRectangle().contains(x, y)) {
 							item.process();
-							allowAction = false;
+							actionLock.add(GameplayScreen.this);
 							return true;
 						}
 					}
@@ -126,6 +128,7 @@ public class GameplayScreen extends ScreenAdapter {
 			if (!(backgroundItems.contains(item) || foregroundItems.contains(item)))
 				item.draw(batch, item.alpha);
 			if (item.moveFlag) {
+				actionLock.add(item);
 				if (item.reverseMove)
 					backgroundItems.add(item);
 				else
@@ -139,12 +142,14 @@ public class GameplayScreen extends ScreenAdapter {
 							public void onEvent(int type, BaseTween<?> source) {
 								backgroundItems.remove(item);
 								foregroundItems.remove(item);
+								actionLock.remove(item);
 							}
 						});
 				item.moveFlag = false;
 				item.reverseMove = false;
 			}
 			if (item.destroyFlag) {
+				actionLock.add(item);
 				Tween.to(item, ItemAccessor.ALPHA, MOVE_TIME)
 						.target(0)
 						.start(MyTweenManager.getInstance())
@@ -153,11 +158,13 @@ public class GameplayScreen extends ScreenAdapter {
 							@Override
 							public void onEvent(int type, BaseTween<?> source) {
 								logic.items.remove(item);
+								actionLock.remove(item);
 							}
 						});
 				item.destroyFlag = false;
 			}
 			if (item.explodeFlag) {
+				actionLock.add(item);
 				Random rand = new Random();
 				Timeline timeline = Timeline.createParallel().beginSequence();
 				for (int i = 0; i < JOLT_COUNT; i++) {
@@ -180,6 +187,7 @@ public class GameplayScreen extends ScreenAdapter {
 							@Override
 							public void onEvent(int type, BaseTween<?> source) {
 								logic.items.remove(item);
+								actionLock.remove(item);
 							}
 						}).start(MyTweenManager.getInstance());
 				item.explodeFlag = false;
@@ -197,7 +205,7 @@ public class GameplayScreen extends ScreenAdapter {
 		drawBackground();
 		drawField();
 		drawItems();
-		allowAction = backgroundItems.size() + foregroundItems.size() == 0;
+		actionLock.remove(this);
 		batch.end();
 	}
 }
