@@ -24,10 +24,13 @@ public class Logic {
 		Random rand = new Random();
 		for (int i = 0; i < FIELD_WIDTH; i++) {
 			for (int j = 0; j < FIELD_HEIGHT; j++) {
-				if (rand.nextInt(10) == 0) {
-					items.add(new Wall(i, j));
+				if (rand.nextInt(7) == 0) {
+					if (rand.nextInt(2) == 0)
+						items.add(new Grenade(this, i, j));
+					else
+						items.add(new Wall(this, i, j));
 				} else {
-					items.add(new Bullet(i, j, types[rand.nextInt(types.length)]));
+					items.add(new Bullet(this, i, j, types[rand.nextInt(types.length)]));
 				}
 			}
 		}

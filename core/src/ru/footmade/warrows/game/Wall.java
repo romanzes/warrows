@@ -2,7 +2,7 @@ package ru.footmade.warrows.game;
 
 public class Wall extends Item {
 
-	protected Wall(int x, int y) {
-		super(x, y, "sprites/spr-wall");
+	protected Wall(Logic logic, int x, int y) {
+		super(logic, x, y, "sprites/spr-wall");
 	}
 }

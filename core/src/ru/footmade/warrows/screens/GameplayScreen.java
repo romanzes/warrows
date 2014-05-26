@@ -2,20 +2,21 @@ package ru.footmade.warrows.screens;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import ru.footmade.warrows.game.Item;
 import ru.footmade.warrows.game.Logic;
-import ru.footmade.warrows.tweens.MyTweenManager;
 import ru.footmade.warrows.tweens.ItemAccessor;
+import ru.footmade.warrows.tweens.MyTweenManager;
 import ru.footmade.warrows.util.CommonResources;
 import ru.footmade.warrows.util.GLCleaner;
 import aurelienribon.tweenengine.BaseTween;
+import aurelienribon.tweenengine.Timeline;
 import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenCallback;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.input.GestureDetector;
@@ -29,6 +30,11 @@ public class GameplayScreen extends ScreenAdapter {
 	
 	private static final float FIELD_RELATIVE_SIZE = 0.9f;
 	private static final float MOVE_TIME = 0.4f;
+	private static final float JOLT_PERIOD = 0.05f;
+	private static final int JOLT_COUNT = 20;
+	private static final float JOLT_RADIUS = 0.1f;
+	private static final float EXPLOSION_REDUCTION_RATIO = 0.85f;
+	private static final float EXPLOSION_REDUCTION_TIME = 0.2f;
 	
 	private TextureRegion fieldTile;
 	private TextureRegion backgroundPart;
@@ -65,7 +71,7 @@ public class GameplayScreen extends ScreenAdapter {
 					y = scrH - y;
 					for (Item item : logic.items) {
 						if (item.getBoundingRectangle().contains(x, y)) {
-							item.process(logic);
+							item.process();
 							allowAction = false;
 							return true;
 						}
@@ -91,6 +97,7 @@ public class GameplayScreen extends ScreenAdapter {
 		for (Item item : logic.items) {
 			item.setBounds(fieldRect.x + item.x * cellSize, fieldRect.y + item.y * cellSize,
 					(float) Math.ceil(cellSize), (float) Math.ceil(cellSize));
+			item.setOriginCenter();
 		}
 	}
 	
@@ -113,17 +120,17 @@ public class GameplayScreen extends ScreenAdapter {
 	
 	private void drawItems() {
 		for (Item item : backgroundItems) {
-			item.draw(batch);
+			item.draw(batch, item.alpha);
 		}
 		for (final Item item : logic.items) {
 			if (!(backgroundItems.contains(item) || foregroundItems.contains(item)))
-				item.draw(batch);
+				item.draw(batch, item.alpha);
 			if (item.moveFlag) {
 				if (item.reverseMove)
 					backgroundItems.add(item);
 				else
 					foregroundItems.add(item);
-				Tween.to((Sprite) item, ItemAccessor.POSITION, MOVE_TIME)
+				Tween.to(item, ItemAccessor.POSITION, MOVE_TIME)
 						.target(fieldRect.x + item.x * cellSize, fieldRect.y + item.y * cellSize)
 						.start(MyTweenManager.getInstance())
 						.setCallbackTriggers(TweenCallback.COMPLETE)
@@ -138,17 +145,44 @@ public class GameplayScreen extends ScreenAdapter {
 				item.reverseMove = false;
 			}
 			if (item.destroyFlag) {
-				Tween.to((Sprite) item, ItemAccessor.ALPHA, MOVE_TIME)
-					.target(0)
-					.start(MyTweenManager.getInstance())
-					.setCallbackTriggers(TweenCallback.COMPLETE)
-					.setCallback(new TweenCallback() {
-						@Override
-						public void onEvent(int type, BaseTween<?> source) {
-							logic.items.remove(item);
-						}
-					});
+				Tween.to(item, ItemAccessor.ALPHA, MOVE_TIME)
+						.target(0)
+						.start(MyTweenManager.getInstance())
+						.setCallbackTriggers(TweenCallback.COMPLETE)
+						.setCallback(new TweenCallback() {
+							@Override
+							public void onEvent(int type, BaseTween<?> source) {
+								logic.items.remove(item);
+							}
+						});
 				item.destroyFlag = false;
+			}
+			if (item.explodeFlag) {
+				Random rand = new Random();
+				Timeline timeline = Timeline.createParallel().beginSequence();
+				for (int i = 0; i < JOLT_COUNT; i++) {
+					float angle = (float) (rand.nextFloat() * Math.PI * 2);
+					float radius = cellSize * JOLT_RADIUS / 2;
+					float targetX = fieldRect.x + item.x * cellSize + (float) Math.cos(angle) * radius;
+					float targetY = fieldRect.y + item.y * cellSize + (float) Math.sin(angle) * radius;
+					timeline.push(Tween.to(item, ItemAccessor.POSITION, JOLT_PERIOD).target(targetX, targetY));
+				}
+				timeline.end();
+				float explosionTime = JOLT_PERIOD * JOLT_COUNT;
+				timeline.beginSequence()
+							.pushPause(explosionTime / 2)
+							.push(Tween.to(item, ItemAccessor.ALPHA, explosionTime / 2).target(0))
+						.end()
+						.push(Tween.to(item, ItemAccessor.SCALE, EXPLOSION_REDUCTION_TIME)
+								.target(EXPLOSION_REDUCTION_RATIO, EXPLOSION_REDUCTION_RATIO))
+						.setCallbackTriggers(TweenCallback.COMPLETE)
+						.setCallback(new TweenCallback() {
+							@Override
+							public void onEvent(int type, BaseTween<?> source) {
+								logic.items.remove(item);
+							}
+						}).start(MyTweenManager.getInstance());
+				item.explodeFlag = false;
 			}
 		}
 		for (Item item : foregroundItems) {

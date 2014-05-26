@@ -27,13 +27,13 @@ public class Bullet extends Item {
 	
 	private int direction;
 
-	protected Bullet(int x, int y, int direction) {
-		super(x, y, types.get(direction));
+	protected Bullet(Logic logic, int x, int y, int direction) {
+		super(logic, x, y, types.get(direction));
 		this.direction = direction;
 	}
 	
 	@Override
-	public void process(Logic logic) {
+	public void process() {
 		int destX = x, destY = y;
 		switch (direction & DIRECTION_HORIZONTAL_MASK) {
 		case DIRECTION_LEFT:
@@ -51,7 +51,7 @@ public class Bullet extends Item {
 			destY--;
 			break;
 		}
-		Item neighbour = logic.getItem(destX, destY);
+		Item neighbour = getLogic().getItem(destX, destY);
 		if (neighbour != null) {
 			neighbour.moveTo(x, y, true);
 		}
