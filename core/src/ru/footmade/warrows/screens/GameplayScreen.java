@@ -6,7 +6,7 @@ import java.util.List;
 import ru.footmade.warrows.game.Item;
 import ru.footmade.warrows.game.Logic;
 import ru.footmade.warrows.tweens.MyTweenManager;
-import ru.footmade.warrows.tweens.SpriteAccessor;
+import ru.footmade.warrows.tweens.ItemAccessor;
 import ru.footmade.warrows.util.CommonResources;
 import ru.footmade.warrows.util.GLCleaner;
 import aurelienribon.tweenengine.BaseTween;
@@ -28,7 +28,7 @@ public class GameplayScreen extends ScreenAdapter {
 	private Logic logic;
 	
 	private static final float FIELD_RELATIVE_SIZE = 0.9f;
-	private static final float MOVE_TIME = 0.5f;
+	private static final float MOVE_TIME = 0.4f;
 	
 	private TextureRegion fieldTile;
 	private TextureRegion backgroundPart;
@@ -123,7 +123,7 @@ public class GameplayScreen extends ScreenAdapter {
 					backgroundItems.add(item);
 				else
 					foregroundItems.add(item);
-				Tween.to((Sprite) item, SpriteAccessor.POSITION, MOVE_TIME)
+				Tween.to((Sprite) item, ItemAccessor.POSITION, MOVE_TIME)
 						.target(fieldRect.x + item.x * cellSize, fieldRect.y + item.y * cellSize)
 						.start(MyTweenManager.getInstance())
 						.setCallbackTriggers(TweenCallback.COMPLETE)
@@ -137,9 +137,22 @@ public class GameplayScreen extends ScreenAdapter {
 				item.moveFlag = false;
 				item.reverseMove = false;
 			}
+			if (item.destroyFlag) {
+				Tween.to((Sprite) item, ItemAccessor.ALPHA, MOVE_TIME)
+					.target(0)
+					.start(MyTweenManager.getInstance())
+					.setCallbackTriggers(TweenCallback.COMPLETE)
+					.setCallback(new TweenCallback() {
+						@Override
+						public void onEvent(int type, BaseTween<?> source) {
+							logic.items.remove(item);
+						}
+					});
+				item.destroyFlag = false;
+			}
 		}
 		for (Item item : foregroundItems) {
-			item.draw(batch);
+			item.draw(batch, item.alpha);
 		}
 	}
 	

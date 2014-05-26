@@ -1,29 +1,35 @@
 package ru.footmade.warrows.tweens;
 
+import ru.footmade.warrows.game.Item;
 import aurelienribon.tweenengine.TweenAccessor;
 
-import com.badlogic.gdx.graphics.g2d.Sprite;
-
-public class SpriteAccessor implements TweenAccessor<Sprite> {
+public class ItemAccessor implements TweenAccessor<Item> {
 	public static final int POSITION = 1;
+	public static final int ALPHA = 2;
 
     @Override
-    public int getValues(Sprite target, int tweenType, float[] returnValues) {
+    public int getValues(Item target, int tweenType, float[] returnValues) {
         switch (tweenType) {
             case POSITION:
                 returnValues[0] = target.getX();
                 returnValues[1] = target.getY();
                 return 2;
+            case ALPHA:
+            	returnValues[0] = target.alpha;
+            	return 1;
             default: assert false; return -1;
         }
     }
     
     @Override
-    public void setValues(Sprite target, int tweenType, float[] newValues) {
+    public void setValues(Item target, int tweenType, float[] newValues) {
         switch (tweenType) {
             case POSITION:
                 target.setPosition(newValues[0], newValues[1]);
                 break;
+            case ALPHA:
+            	target.alpha = newValues[0];
+            	break;
             default: assert false; break;
         }
     }

@@ -19,7 +19,7 @@ public class MyTweenManager extends TweenManager {
 	public static void register() {
 		Tween.registerAccessor(Fader.class, new FaderAccessor());
 		Tween.registerAccessor(Observer.class, new ObserverAccessor());
-		Tween.registerAccessor(Sprite.class, new SpriteAccessor());
+		Tween.registerAccessor(Sprite.class, new ItemAccessor());
 	}
 	
 	public static void updateInstance(float deltaTime) {

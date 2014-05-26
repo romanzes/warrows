@@ -53,10 +53,10 @@ public class Bullet extends Item {
 		}
 		Item neighbour = logic.getItem(destX, destY);
 		if (neighbour != null) {
-			neighbour.moveTo(x, y);
-			neighbour.reverseMove = true;
+			neighbour.moveTo(x, y, true);
 		}
-		if (destX >= 0 && destX < Logic.FIELD_WIDTH && destY >= 0 && destY < Logic.FIELD_HEIGHT)
-			moveTo(destX, destY);
+		moveTo(destX, destY);
+		if (destX < 0 || destX >= Logic.FIELD_WIDTH || destY < 0 || destY >= Logic.FIELD_HEIGHT)
+			destroy();
 	}
 }
