@@ -24,7 +24,11 @@ public class Logic {
 		Random rand = new Random();
 		for (int i = 0; i < FIELD_WIDTH; i++) {
 			for (int j = 0; j < FIELD_HEIGHT; j++) {
-				items.add(new Bullet(i, j, types[rand.nextInt(types.length)]));
+				if (rand.nextInt(10) == 0) {
+					items.add(new Wall(i, j));
+				} else {
+					items.add(new Bullet(i, j, types[rand.nextInt(types.length)]));
+				}
 			}
 		}
 	}
