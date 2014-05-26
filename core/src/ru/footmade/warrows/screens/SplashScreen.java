@@ -29,7 +29,7 @@ public class SplashScreen extends ScreenAdapter {
 	@Override
 	public void show() {
 		batch = new SpriteBatch();
-		logo = new Sprite(CommonResources.getLinearRegion("footmade_logo"));
+		logo = new Sprite(CommonResources.getLinearRegion("ui/footmade-logo"));
 		Rectangle logoRect = logo.getBoundingRectangle();
 		logoRect.fitInside(new Rectangle(0, 0, Gdx.graphics.getWidth() * LOGO_RELATIVE_SIZE,
 				Gdx.graphics.getHeight() * LOGO_RELATIVE_SIZE)).setCenter(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2);

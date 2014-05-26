@@ -3,6 +3,7 @@ package ru.footmade.warrows.screens;
 import java.util.ArrayList;
 import java.util.List;
 
+import ru.footmade.warrows.MyGdxGame;
 import ru.footmade.warrows.tweens.MyTweenManager;
 import ru.footmade.warrows.tweens.ObserverAccessor;
 import ru.footmade.warrows.util.CommonResources;
@@ -15,8 +16,7 @@ import aurelienribon.tweenengine.TweenEquation;
 import aurelienribon.tweenengine.equations.Quad;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input.Buttons;
-import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -46,7 +46,7 @@ public class ComicScreen extends ScreenAdapter {
 		batch = new SpriteBatch();
 		scrW = Gdx.graphics.getWidth();
 		scrH = Gdx.graphics.getHeight();
-		readJson(Gdx.files.internal("comics/" + comicId + ".txt").readString());
+		readJson(Gdx.files.internal("data/comics/" + comicId + ".txt").readString());
 		screenRatio = Math.min((float) comicW / scrW, (float) comicH / scrH);
 	}
 	
@@ -115,8 +115,6 @@ public class ComicScreen extends ScreenAdapter {
 								nextWaypoint();
 						}
 					});
-		} else {
-			//enableInput();
 		}
 	}
 	
@@ -138,62 +136,12 @@ public class ComicScreen extends ScreenAdapter {
 		WaypointInfo firstWaypoint = waypoints.get(0);
 		observer = new Observer(firstWaypoint.x, firstWaypoint.y, firstWaypoint.scale);
 		nextWaypoint();
-	}
-	
-	private void enableInput() {
-		Gdx.input.setInputProcessor(new InputProcessor() {
-			private int dragX, dragY;
-			
+		
+		Gdx.input.setInputProcessor(new InputAdapter() {
 			@Override
 			public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-				return false;
-			}
-			
-			@Override
-			public boolean touchDragged(int screenX, int screenY, int pointer) {
-				int dx = screenX - dragX;
-				int dy = screenY - dragY;
-				dragX = screenX;
-				dragY = screenY;
-				observer.x -= dx;
-				observer.y += dy;
-				return false;
-			}
-			
-			@Override
-			public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-				if (button == Buttons.MIDDLE) {
-					System.out.println("lol");
-				}
-				dragX = screenX;
-				dragY = screenY;
+				MyGdxGame.getSelf().setScreen(new GameplayScreen());
 				return true;
-			}
-			
-			@Override
-			public boolean scrolled(int amount) {
-				observer.scale += amount * 0.1f;
-				return true;
-			}
-			
-			@Override
-			public boolean mouseMoved(int screenX, int screenY) {
-				return false;
-			}
-			
-			@Override
-			public boolean keyUp(int keycode) {
-				return false;
-			}
-			
-			@Override
-			public boolean keyTyped(char character) {
-				return false;
-			}
-
-			@Override
-			public boolean keyDown(int keycode) {
-				return false;
 			}
 		});
 	}

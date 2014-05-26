@@ -1,6 +1,6 @@
 package ru.footmade.warrows;
 
-import ru.footmade.warrows.screens.SplashScreen;
+import ru.footmade.warrows.screens.GameplayScreen;
 import ru.footmade.warrows.tweens.MyTweenManager;
 import ru.footmade.warrows.util.CommonResources;
 
@@ -18,7 +18,7 @@ public class MyGdxGame extends Game {
 	public void create() {
 		_self = this;
 		MyTweenManager.register();
-		setScreen(new SplashScreen());
+		setScreen(new GameplayScreen());
 	}
 	
 	@Override
